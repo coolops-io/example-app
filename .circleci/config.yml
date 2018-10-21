@@ -17,4 +17,3 @@ jobs:
                   --token ${COOLOPS_PROJECT_API_TOKEN} \
                   --param COMMIT=${CIRCLE_SHA1} \
                   --param BRANCH=${CIRCLE_BRANCH}
-
