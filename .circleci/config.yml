@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  notify_coolops:
+  build:
     docker:
       - image: circleci/ruby:latest
     working_directory: ~/example-app
@@ -11,7 +11,7 @@ jobs:
           curl -L https://github.com/coolopsio/coolops/releases/download/v0.1.0/install.sh | sudo sh
 
       - run:
-        name: Run the script
+        name: Notify coolops
         command: |
           coolops build:new:circleci \
                   --token ${COOLOPS_PROJECT_API_TOKEN} \
