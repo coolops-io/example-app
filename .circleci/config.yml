@@ -5,12 +5,12 @@ jobs:
       - image: circleci/ruby:latest
     working_directory: ~/example-app
     steps:
-      run:
+      - run:
         name: Download the command line tool
         command: |
           curl -L https://github.com/coolopsio/coolops/releases/download/v0.1.0/install.sh | sudo sh
 
-      notify:
+      - run:
         name: Run the script
         command: |
           coolops build:new:circleci \
