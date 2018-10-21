@@ -1,20 +1,20 @@
 version: 2
 jobs:
-  notify_coolops:
+  build:
     docker:
       - image: circleci/ruby:latest
     working_directory: ~/example-app
     steps:
-      run:
-        name: Download the command line tool
-        command: |
-          curl -L https://github.com/coolopsio/coolops/releases/download/v0.1.0/install.sh | sudo sh
+      - checkout
+      - run:
+          name: Download the command line tool
+          command: |
+            curl -L https://github.com/coolopsio/coolops/releases/download/v0.1.0/install.sh | sudo sh
 
-      notify:
-        name: Run the script
-        command: |
-          coolops build:new:circleci \
-                  --token ${COOLOPS_PROJECT_API_TOKEN} \
-                  --param COMMIT=${CIRCLE_SHA1} \
-                  --param BRANCH=${CIRCLE_BRANCH}
-
+      - run:
+          name: Notify coolops
+          command: |
+            coolops build:new:circleci \
+                    --token ${COOLOPS_PROJECT_API_TOKEN} \
+                    --param COMMIT=${CIRCLE_SHA1} \
+                    --param BRANCH=${CIRCLE_BRANCH}
