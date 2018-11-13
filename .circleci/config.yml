@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Download the command line tool
           command: |
-            curl -L https://github.com/coolopsio/coolops/releases/download/v0.1.0/install.sh | sudo sh
+            curl -L https://github.com/coolops-io/coolops/releases/download/v0.2.0/install.sh | sudo sh
 
       - run:
           name: Notify coolops
